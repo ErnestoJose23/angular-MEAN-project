@@ -20,13 +20,13 @@ const storage = multer.diskStorage({
         cb(error, "backend/images");
     },
     filename: (req, file, cb) => {
-        const name = file.originalname.toLocaleLowerCase().split(' ').join('-');
+        const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(error, name + '-' + Date.now() + '.' + ext);
+        cb(null, name + '-' + Date.now() + '.' + ext);
     }
 });
 
-router.post("", multer(storage).single("image"), (req,res,next) =>{
+router.post("", multer({storage: storage}).single("image"), (req,res,next) =>{
     const post = new Post({
         title: req.body.title,
         content: req.body.content
