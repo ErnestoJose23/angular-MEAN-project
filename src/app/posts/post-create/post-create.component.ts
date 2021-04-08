@@ -2,7 +2,7 @@ import { Component, OnInit} from "@angular/core";
 import { FormControl, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Post } from "../post.model";
-
+import { mimeType } from "./mime-type.validator";
 import { PostsService } from "../posts.service";
 
 @Component({
@@ -24,7 +24,7 @@ export class PostCreateComponent implements OnInit{
         this.form = new FormGroup({
             'title': new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
             'content': new FormControl(null, {validators: [Validators.required]}),
-            'image': new FormControl(null, {validators: [Validators.required]})
+            'image': new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
         });
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             if(paramMap.has('postId')){
