@@ -1,22 +1,22 @@
 
 
 mat-form-field{
-    width: 100%;
+  width: 100%;
 }
 
 textarea{
-    width: 100%;
+  width: 100%;
 }
 
 mat-spinner {
-    margin: auto;
+  margin: auto;
 }
 
 .image-preview{
-    height: 5rem;
-    margin: 1rem 0;
+  height: 5rem;
+  margin: 1rem 0;
 }
 
 .image-preview img{
-    height: 100%;
+  height: 100%;
 }
