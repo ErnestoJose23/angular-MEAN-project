@@ -82,7 +82,7 @@ exports.getPost = (req,res,next) =>{
 
 exports.deletePost = (req, res, next) => {
     Post.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
-        if(result.nModified > 0){
+        if(result.n > 0){
             res.status(200).json({message: "Deleted succesfully"});
         } else {
             res.status(401).json({ message: "User not authorized to delete"});
